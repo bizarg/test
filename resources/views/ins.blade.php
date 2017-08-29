@@ -19,24 +19,33 @@
                 <form id="add_domains" class="form-horizontal" action="{{ action('InstallatronController@install') }}" method="post">
                     {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Name</label>
+                    <div class="form-install">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Name</label>
 
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="name[]" value="">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name[]" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">App</label>
+
+                            <div class="col-md-6">
+                                <select id="" class="form-control" name="version[]" value="">
+                                    <option value="1">version 1.0</option>
+                                    <option value="2">version 2.0</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a class="btn btn-primary remove">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">App</label>
-
-                        <div class="col-md-6">
-                            <select id="" class="form-control" name="version[]" value="">
-                                <option value="1">version 1.0</option>
-                                <option value="2">version 2.0</option>
-                            </select>
-                        </div>
-                    </div>
 
                     <div class="form-group" id="button">
                         <div class="col-md-2 col-md-offset-8">
@@ -45,6 +54,8 @@
                             </a>
                         </div>
                     </div>
+
+
                 </form>
             </div>
         </div>
@@ -68,6 +79,7 @@
                 e.preventDefault();
 
                 addFields();
+                addEventRemove();
             });
 
             $('#install').on('click', function(e){
@@ -77,7 +89,8 @@
             });
 
             function addFields() {
-                $('#button').before('<div class="form-group">\
+                $('#button').before('<div class="form-install">\
+                <div class="form-group">\
                     <label class="col-md-2 control-label">Name</label>\
                     <div class="col-md-6">\
                     <input type="text" class="form-control" name="name[]" value="">\
@@ -99,15 +112,16 @@
                 </a>\
                 </div>\
                 </div>\
+                </div>\
                     </div>')
-
-                addEventRemove();
             }
 
             function addEventRemove(){
                 $('.remove').on('click', function (e) {
                     e.preventDefault();
-                    $(this).parent().parent().remove();
+//                    $(this).parent().parent().remove();
+                    $(this).closest(".form-install").remove();
+//                    console.log($(this).closest(".form-install"));
                 });
             }
         });

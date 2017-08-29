@@ -18,10 +18,9 @@ class InstallatronController extends Controller
 
         $newarray = [];
         foreach ($array['name'] as $key => $name) {
-            $newarray[] = $name'];
+            $newarray[] = $name;
         }
-     
-        dd($newarray);
+    }
 //        dd($request);
 //        wzrcdw
 //        .gShgJiCeq95
@@ -84,5 +83,5 @@ class InstallatronController extends Controller
 //        echo $response["message"];
 
 
-    }
+
 }
