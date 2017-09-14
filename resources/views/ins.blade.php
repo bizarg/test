@@ -24,7 +24,7 @@
                             <label class="col-md-2 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name[]" value="">
+                                <input type="text" class="form-control" name="install[names][]" value="">
                             </div>
                         </div>
 
@@ -32,9 +32,9 @@
                             <label class="col-md-2 control-label">App</label>
 
                             <div class="col-md-6">
-                                <select id="" class="form-control" name="version[]" value="">
-                                    <option value="1">version 1.0</option>
-                                    <option value="2">version 2.0</option>
+                                <select id="" class="form-control" name="install[versions][]" value="">
+                                    <option value="newword">newword</option>
+                                    <option value="wordpress">wordpress</option>
                                 </select>
                             </div>
 
@@ -93,7 +93,7 @@
                 <div class="form-group">\
                     <label class="col-md-2 control-label">Name</label>\
                     <div class="col-md-6">\
-                    <input type="text" class="form-control" name="name[]" value="">\
+                    <input type="text" class="form-control" name="install[names][]" value="">\
                     </div>\
                     <div class="col-md-2">\
                     </div>\
@@ -101,9 +101,9 @@
                     <div class="form-group">\
                     <label class="col-md-2 control-label">App</label>\
                     <div class="col-md-6">\
-                    <select id="" class="form-control" name="version[]" value="">\
-                    <option value="1">version 1.0</option>\
-                <option value="2">version 2.0</option>\
+                    <select id="" class="form-control" name="install[versions][]" value="">\
+                    <option value="newword">newword</option>\
+                <option value="wordpress">wordpress</option>\
                 </select>\
                 </div>\
                 <div class="col-md-2">\
