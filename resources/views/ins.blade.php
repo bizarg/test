@@ -21,10 +21,10 @@
 
                     <div class="form-install">
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Name</label>
+                            <label class="col-md-2 control-label">Domain</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="install[names][]" value="">
+                                <input type="text" class="form-control" name="install[domains][]" value="">
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@
                             <label class="col-md-2 control-label">App</label>
 
                             <div class="col-md-6">
-                                <select id="" class="form-control" name="install[versions][]" value="">
+                                <select class="form-control" name="install[app][]" value="">
                                     <option value="newword">newword</option>
                                     <option value="wordpress">wordpress</option>
                                 </select>
@@ -91,9 +91,9 @@
             function addFields() {
                 $('#button').before('<div class="form-install">\
                 <div class="form-group">\
-                    <label class="col-md-2 control-label">Name</label>\
+                    <label class="col-md-2 control-label">Domain</label>\
                     <div class="col-md-6">\
-                    <input type="text" class="form-control" name="install[names][]" value="">\
+                    <input type="text" class="form-control" name="install[domains][]" value="">\
                     </div>\
                     <div class="col-md-2">\
                     </div>\
@@ -101,7 +101,7 @@
                     <div class="form-group">\
                     <label class="col-md-2 control-label">App</label>\
                     <div class="col-md-6">\
-                    <select id="" class="form-control" name="install[versions][]" value="">\
+                    <select class="form-control" name="install[app][]" value="">\
                     <option value="newword">newword</option>\
                 <option value="wordpress">wordpress</option>\
                 </select>\
@@ -119,9 +119,7 @@
             function addEventRemove(){
                 $('.remove').on('click', function (e) {
                     e.preventDefault();
-//                    $(this).parent().parent().remove();
                     $(this).closest(".form-install").remove();
-//                    console.log($(this).closest(".form-install"));
                 });
             }
         });

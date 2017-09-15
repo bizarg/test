@@ -16,49 +16,9 @@ class InstallatronController extends Controller
 
     public function install(Request $request)
     {
-//        $arr = request('install');
-//        $arr = collect(request()->except('_token'));
-//        $arr = collect(request()->only('install.names', 'install.versions'));
-
-
-
-//        $_SERVER_HOST = "/CMD_PLUGINS/installatron/index.raw";
-//        $_LOGIN = "http://174.127.85.34:2222/CMD_LOGIN";
-
-//        $_SERVER_USER = "admin";
-//        $_SERVER_PASS = "FhcC3fNwjN";
-//        $_INSTALL_APPLICATION = "newword";
-//        $_INSTALL_WHERE = "http://domain.com/blog9998/";
-
-//         Create the query for the Installatron Install Automation API
-//        $query = $_SERVER_HOST."?api=json"
-//            ."&cmd=install"
-//            ."&application=".$_INSTALL_APPLICATION
-//            ."&url=".urlencode($_INSTALL_WHERE)
-//        ;
-
-//        $fields = array(
-//            'referer' => $query,
-//            'username' => $_SERVER_USER,
-//            'password' => $_SERVER_PASS,
-//        );
-
-//        $ckfile = public_path().'\tmp\cookie.txt';
-
-//        $curl = curl_init($_LOGIN);
-//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-//        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-//        curl_setopt($curl,CURLOPT_COOKIEJAR, $ckfile);
-//        curl_setopt($curl,CURLOPT_COOKIEFILE, $ckfile);
-//        curl_setopt($curl,CURLOPT_POSTFIELDS, $fields);
-//
-//        $response = curl_exec($curl);
-//
-//        curl_close($curl);
-
-
-        $names = request('install.names');
-        $versions = request('install.versions');
+//        dd($request);
+        $domains = request('install.domains');
+        $app = request('install.app');
 
         $_SERVER_HOST = "/CMD_PLUGINS/installatron/index.raw";
         $_LOGIN = "http://174.127.85.34:2222/CMD_LOGIN";
@@ -68,12 +28,12 @@ class InstallatronController extends Controller
         $ckfile = public_path().'\tmp\cookie.txt';
 
         $message = [];
-        foreach ($names as $i => $name) {
+        foreach ($domains as $i => $domain) {
 
              $query = $_SERVER_HOST."?api=json"
                  ."&cmd=install"
-                 ."&application=".$versions[$i]
-                 ."&url=".urlencode($name)
+                 ."&application=".$app[$i]
+                 ."&url=".urlencode($domain)
              ;
 
             $fields = [
@@ -91,15 +51,18 @@ class InstallatronController extends Controller
 
             $response = curl_exec($curl);
             if ($response === false) {
-                $message[] = 'False';
+                $messages[] = 'Error';
+            } else {
+                $response = json_decode($response);
+                $messages[] = $response;
             }
-            $response = json_decode($response);
-            $message[$name] = $response;
 
             curl_close($curl);
         }
 
-        dd($message);
+
+
+        return view('answer', compact('messages'));
 
     }
 
