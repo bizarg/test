@@ -63,8 +63,6 @@ class InstallatronController extends Controller
         $answer = [];
 
         foreach ($messages as $message) {
-
-w
                 $answers[] = array_diff(explode("\n", $message->message), array(''));
         }
 
