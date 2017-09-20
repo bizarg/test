@@ -60,9 +60,15 @@ class InstallatronController extends Controller
             curl_close($curl);
         }
 
+        $answer = [];
 
+        foreach ($messages as $message) {
 
-        return view('answer', compact('messages'));
+w
+                $answers[] = array_diff(explode("\n", $message->message), array(''));
+        }
+
+        return view('answer', compact('answers'));
 
     }
 
